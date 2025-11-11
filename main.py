@@ -1,16 +1,18 @@
-# This is a sample Python script.
+import os
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+structure = {
+    "sensors": ["camera.py", "imu.py", "__init__.py"],
+    "actuators": ["motors.py", "kicker.py", "__init__.py"],
+    "behavior": ["attacker.py", "defender.py", "__init__.py"],
+    "control": ["pid_controller.py", "__init__.py"],
+    "strategy": ["team_strategy.py", "__init__.py"],
+}
 
+root = "RoboCup"
+os.makedirs(root, exist_ok=True)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('Chuck')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+for folder, files in structure.items():
+    path = os.path.join(root, folder)
+    os.makedirs(path, exist_ok=True)
+    for f in files:
+        open(os.path.join(path, f), "a").close()
