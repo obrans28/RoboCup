@@ -59,9 +59,9 @@ def ball_vector(ir_sensors: list[int]) -> float | None:
     #     return None
 
     vector = get_vector_average(SENSOR_ANGLE_LIST, ir_sensors, IR_CUTOFF)
-    if vector is not None:
-        print(f"Raw IR Sensors: {ir_sensors}")
-        print(f"Filtered IR Sensors: {ir_sensors}")
+    # if vector is not None:
+    #     print(f"Raw IR Sensors: {ir_sensors}")
+    #     print(f"Filtered IR Sensors: {ir_sensors}")
 
     return vector
 
@@ -90,4 +90,3 @@ def get_vector_average(angles: list[float], weights: list[float], cutoff=0):
 
     return (round(final_deg % 360, 2), magnitude) if total_intensity else None
 
-print(ball_vector([0, 0, 0, 5, 92, 75, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
