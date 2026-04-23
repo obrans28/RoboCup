@@ -35,35 +35,6 @@ def line_direction_angle(light_sensors: list[int],threshold) -> float | None:
         return None
 
 
-def ball_vector(ir_sensors: list[int]) -> float | None:
-    """
-    Function returns the vector from the center of the robot pointing to the ball. Uses average light intensity.
-    :param ir_sensors: list of the 16 ir sensors with light intensity from 0-255. Arranged in a circle with 22.5 degrees between each sensor.
-    :return: float: the direction (0-359.9) of the ball
-             None: no ball is detected
-    """
-    NUMBER_OF_SENSORS = len(ir_sensors)
-    SENSOR_ANGLE = 360 / NUMBER_OF_SENSORS
-    IR_CUTOFF = 0
-    SENSOR_ANGLE_LIST = [SENSOR_ANGLE * i for i in range(NUMBER_OF_SENSORS)]
-    # filtered_sensors = [0] * NUMBER_OF_SENSORS
-    # for i, val in enumerate(ir_sensors):
-    #     if val > IR_CUTOFF and (ir_sensors[(i - 1) % NUMBER_OF_SENSORS] <= IR_CUTOFF and ir_sensors[
-    #         (i + 1) % NUMBER_OF_SENSORS] <= IR_CUTOFF):
-    #         # If a sensor is above the cutoff and at least one of its neighbors is not, it's likely a false positive
-    #         filtered_sensors[i] = 0
-    #     elif val > IR_CUTOFF:
-    #         filtered_sensors[i] = 100
-    #
-    # if filtered_sensors == [0] * NUMBER_OF_SENSORS:
-    #     return None
-
-    vector = get_vector_average(SENSOR_ANGLE_LIST, ir_sensors, IR_CUTOFF)
-    # if vector is not None:
-    #     print(f"Raw IR Sensors: {ir_sensors}")
-    #     print(f"Filtered IR Sensors: {ir_sensors}")
-
-    return vector
 
 
 def get_vector_average(angles: list[float], weights: list[float], cutoff=0):

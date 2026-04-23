@@ -117,7 +117,7 @@ if __name__ == "__main__":
             ball_dir = ir.find_ball_direction()
 
             if ball_dir:
-                error = (ball_dir[0] - 180) % 360 - 180
+                error = (ball_dir - 180) % 360 - 180
 
                 if abs(error) < 15:
                     print("[LOG] Ball centered. Targeting goal.")
@@ -155,7 +155,7 @@ if __name__ == "__main__":
 
             if ball_dir:
                 # Calculate error: 0 is front, positive right, negative left
-                error = (ball_dir[0] - 180) % 360 - 180
+                error = (ball_dir - 180) % 360 - 180
 
                 # If ball is roughly in front, prioritize goal alignment
                 if abs(error) < 15:
